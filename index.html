@@ -7,7 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<style>:root{--bg:#fef6ec;--bridge:#e8d9c0;--plank:#d8c19a;--ink:#3a2e22;--pink:#ff8fa3;--green:#5ec26a;--accent:#ff6b6b;--card:#fffaf2;--shadow:0 6px 18px rgba(58,46,34,.15);}*{box-sizing:border-box;}body{margin:0;font-family:'Mitr',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;align-items:center;}.screen{width:100%;max-width:480px;padding:20px;}h1{text-align:center;font-size:28px;margin:10px 0 4px;}.card{background:var(--card);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-top:14px;}.tabs{display:flex;gap:8px;margin-top:16px;}.tab-btn{flex:1;padding:10px;border:none;border-radius:12px;background:#eee;font-family:'Mitr',sans-serif;font-size:15px;cursor:pointer;}.tab-btn.active{background:var(--pink);color:#fff;}input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:2px solid #ddd;font-family:'Mitr',sans-serif;font-size:15px;}button.main{width:100%;margin-top:14px;padding:13px;border:none;border-radius:12px;background:var(--accent);color:#fff;font-family:'Mitr',sans-serif;font-size:16px;cursor:pointer;}button.main:active{transform:scale(0.98);}.msg{margin-top:10px;font-size:14px;text-align:center;min-height:18px;}.msg.err{color:#d33;}.msg.ok{color:#2a8a3f;}.topbar{width:100%;max-width:480px;display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0;}.circle-btn{width:42px;height:42px;border-radius:50%;background:var(--pink);border:none;color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);}.userchip{font-size:14px;background:#fff;padding:6px 12px;border-radius:20px;box-shadow:var(--shadow);}.coinchip{font-size:13px;background:#fff7d6;padding:6px 10px;border-radius:20px;box-shadow:var(--shadow);margin-left:6px;}#bridge{position:relative;width:100%;height:340px;margin-top:14px;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(90deg,var(--plank) 0 38px,var(--bridge) 38px 44px);box-shadow:var(--shadow);}#bridge.table{background:#c9a876;}.sushi{font-size:34px;background:none;border:none;cursor:pointer;user-select:none;filter:drop-shadow(0 3px 3px rgba(0,0,0,.2));animation:pop .15s ease;}#bridge:not(.table) .sushi{position:absolute;}#bridge.table .sushi{position:absolute;}#bridge.table .sushi.next{box-shadow:0 0 0 4px #ffd54f,0 0 14px 6px rgba(255,213,79,.8);border-radius:50%;}#bridge.table .sushi.done{opacity:.2;pointer-events:none;}@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}.sushi.wasabi{filter:drop-shadow(0 0 8px rgba(220,40,40,.8));}.sushi.clock{filter:drop-shadow(0 0 8px rgba(244,169,75,.85));}.popup{position:absolute;font-weight:700;font-size:16px;pointer-events:none;animation:floatUp .6s ease forwards;z-index:5;}@keyframes floatUp{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(-32px);}}.hud{display:flex;justify-content:space-between;margin-top:12px;font-size:18px;}.timer{font-weight:700;color:var(--accent);}.board-row{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px solid #eee;font-size:15px;}.board-row:first-child{font-weight:700;color:var(--accent);}.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50;}.modal-bg.show{display:flex;}.modal{background:#fff;border-radius:16px;padding:22px;width:88%;max-width:360px;text-align:center;max-height:80vh;overflow-y:auto;}.hidden{display:none !important;}.adminbox{background:#fff3e0;border-radius:12px;padding:14px;margin-top:14px;}.adminbox button{width:100%;margin-top:8px;padding:10px;border:none;border-radius:10px;background:var(--green);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.adminbox button.b2{background:#f4a94b;}.shop-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;border-radius:12px;background:#fff;box-shadow:var(--shadow);margin-top:10px;text-align:left;}.shop-item button{border:none;border-radius:10px;padding:8px 12px;background:var(--pink);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.admin-row{display:flex;justify-content:space-between;padding:8px 4px;border-bottom:1px solid #eee;font-size:14px;}.admin-row:first-child{font-weight:700;}.logout-actions{display:flex;gap:10px;margin-top:16px;}.logout-actions button{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Mitr',sans-serif;cursor:pointer;}</style>
+<style>:root{--bg:#fef6ec;--bridge:#e8d9c0;--plank:#d8c19a;--ink:#3a2e22;--pink:#ff8fa3;--green:#5ec26a;--accent:#ff6b6b;--card:#fffaf2;--shadow:0 6px 18px rgba(58,46,34,.15);}*{box-sizing:border-box;}body{margin:0;font-family:'Mitr',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;align-items:center;}.screen{width:100%;max-width:480px;padding:20px;}h1{text-align:center;font-size:28px;margin:10px 0 4px;}.card{background:var(--card);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-top:14px;}.tabs{display:flex;gap:8px;margin-top:16px;}.tab-btn{flex:1;padding:10px;border:none;border-radius:12px;background:#eee;font-family:'Mitr',sans-serif;font-size:15px;cursor:pointer;}.tab-btn.active{background:var(--pink);color:#fff;}input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:2px solid #ddd;font-family:'Mitr',sans-serif;font-size:15px;}button.main{width:100%;margin-top:14px;padding:13px;border:none;border-radius:12px;background:var(--accent);color:#fff;font-family:'Mitr',sans-serif;font-size:16px;cursor:pointer;}button.main:active{transform:scale(0.98);}.msg{margin-top:10px;font-size:14px;text-align:center;min-height:18px;}.msg.err{color:#d33;}.msg.ok{color:#2a8a3f;}.topbar{width:100%;max-width:480px;display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0;}.circle-btn{width:42px;height:42px;border-radius:50%;background:var(--pink);border:none;color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);}.userchip{font-size:14px;background:#fff;padding:6px 12px;border-radius:20px;box-shadow:var(--shadow);}.coinchip{font-size:13px;background:#fff7d6;padding:6px 10px;border-radius:20px;box-shadow:var(--shadow);margin-left:6px;}#bridge{position:relative;width:100%;height:340px;margin-top:14px;border-radius:16px;overflow:hidden;background:linear-gradient(#fef6ec,#fef6ec);box-shadow:var(--shadow);}
+#bridgeScene{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+#bridge.table #bridgeScene{display:none;}
+#bridge.table{background:#c9a876;}
+#bridgeItems{position:absolute;inset:0;z-index:1;}
+#chopstick{position:absolute;left:6%;top:78%;font-size:34px;z-index:3;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));}
+#bridge.table #chopstick{display:none;}
+.sushi.catchable{box-shadow:0 0 0 5px #4fc3f7,0 0 16px 8px rgba(79,195,247,.75);}
+.sushi.flowing{animation-name:flowPath;animation-timing-function:linear;animation-fill-mode:forwards;}
+@keyframes flowPath{0%{left:84%;top:6%;}25%{left:62%;top:20%;}50%{left:42%;top:40%;}75%{left:22%;top:62%;}100%{left:9%;top:80%;}}
+.sushi{font-size:34px;background:none;border:none;cursor:pointer;user-select:none;filter:drop-shadow(0 3px 3px rgba(0,0,0,.2));animation:pop .15s ease;}#bridge:not(.table) .sushi{position:absolute;}#bridge.table .sushi{position:absolute;}#bridge.table .sushi.next{box-shadow:0 0 0 4px #ffd54f,0 0 14px 6px rgba(255,213,79,.8);border-radius:50%;}#bridge.table .sushi.done{opacity:.2;pointer-events:none;}@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}.sushi.wasabi{filter:drop-shadow(0 0 8px rgba(220,40,40,.8));}.sushi.clock{filter:drop-shadow(0 0 8px rgba(244,169,75,.85));}.popup{position:absolute;font-weight:700;font-size:16px;pointer-events:none;animation:floatUp .6s ease forwards;z-index:5;}@keyframes floatUp{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(-32px);}}.hud{display:flex;justify-content:space-between;margin-top:12px;font-size:18px;}.timer{font-weight:700;color:var(--accent);}.board-row{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px solid #eee;font-size:15px;}.board-row:first-child{font-weight:700;color:var(--accent);}.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50;}.modal-bg.show{display:flex;}.modal{background:#fff;border-radius:16px;padding:22px;width:88%;max-width:360px;text-align:center;max-height:80vh;overflow-y:auto;}.hidden{display:none !important;}.adminbox{background:#fff3e0;border-radius:12px;padding:14px;margin-top:14px;}.adminbox button{width:100%;margin-top:8px;padding:10px;border:none;border-radius:10px;background:var(--green);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.adminbox button.b2{background:#f4a94b;}.shop-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;border-radius:12px;background:#fff;box-shadow:var(--shadow);margin-top:10px;text-align:left;}.shop-item button{border:none;border-radius:10px;padding:8px 12px;background:var(--pink);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.admin-row{display:flex;justify-content:space-between;padding:8px 4px;border-bottom:1px solid #eee;font-size:14px;}.admin-row:first-child{font-weight:700;}.logout-actions{display:flex;gap:10px;margin-top:16px;}.logout-actions button{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Mitr',sans-serif;cursor:pointer;}.speed-btn{width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#4fc3f7;color:#fff;font-family:'Mitr',sans-serif;font-size:16px;cursor:pointer;}</style>
 </head>
 <body>
 <div class="topbar hidden" id="topbar">
@@ -42,7 +52,35 @@
 <span>คะแนน: <b id="score">0</b></span>
 <span class="timer">⏱ <span id="time">60</span> วิ</span>
 </div>
-<div id="bridge"></div>
+<div id="bridge">
+<svg id="bridgeScene" viewBox="0 0 400 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="340" fill="#eaf6f2"/>
+<polygon points="0,60 60,10 130,60 90,60 60,35 30,60" fill="#7fae6b"/>
+<polygon points="260,50 330,5 400,55 400,60 260,60" fill="#8fbf78"/>
+<circle cx="45" cy="50" r="26" fill="#5c9c52"/>
+<circle cx="80" cy="55" r="20" fill="#6fae5f"/>
+<circle cx="330" cy="45" r="28" fill="#5c9c52"/>
+<circle cx="365" cy="55" r="18" fill="#6fae5f"/>
+<path d="M60 60 L60 100 M340 55 L340 100" stroke="#6b4a2f" stroke-width="8"/>
+<path d="M60 100 Q160 180 340 100" stroke="#8a5a35" stroke-width="26" fill="none"/>
+<path d="M60 100 Q160 180 340 100" stroke="#6b4326" stroke-width="26" fill="none" stroke-dasharray="4 10"/>
+<ellipse cx="30" cy="300" rx="40" ry="16" fill="#b98d5e"/>
+<ellipse cx="120" cy="320" rx="36" ry="14" fill="#a97c4f"/>
+<ellipse cx="360" cy="290" rx="34" ry="14" fill="#b98d5e"/>
+<path d="M0 190 Q100 240 200 210 T400 220 L400 340 L0 340 Z" fill="#7fd6d0" opacity="0.85"/>
+<path d="M0 220 Q100 260 200 240 T400 250 L400 340 L0 340 Z" fill="#5fc2ba" opacity="0.9"/>
+</svg>
+<button id="chopstick">🥢</button>
+<div id="bridgeItems"></div>
+</div>
+</div>
+<div class="modal-bg" id="speedModal">
+<div class="modal">
+<h3>🎢 เลือกความเร็วสายพาน</h3>
+<button class="speed-btn" data-speed="2">2× ช้า</button>
+<button class="speed-btn" data-speed="4">4× ปานกลาง</button>
+<button class="speed-btn" data-speed="6">6× เร็วมาก</button>
+</div>
 </div>
 <div class="screen hidden" id="resultScreen">
 <h1>🏆 จบรอบ</h1>
@@ -69,7 +107,7 @@
 </div>
 <div class="modal-bg" id="leaderModal">
 <div class="modal">
-<h3>📋 กระดานคะแนน (ทุกคน)</h3>
+<h3>📋 กระดานผู้นำ (Top 3)</h3>
 <div id="fullBoard"></div>
 <button class="main" id="closeLeader">ปิด</button>
 </div>
@@ -93,13 +131,13 @@
 </div>
 <script>
 const firebaseConfig = {
-apiKey: "AIzaSyADoChNxtoXAUiEhfp3gmMXRnUtg9oQ7QI",
-authDomain: "sushi-game-318d4.firebaseapp.com",
-databaseURL: "https://sushi-game-318d4-default-rtdb.firebaseio.com",
-projectId: "sushi-game-318d4",
-storageBucket: "sushi-game-318d4.firebasestorage.app",
-messagingSenderId: "716768545239",
-appId: "1:716768545239:web:8d26c32688838288a7a392"
+apiKey: "AIzaSyD0Negxg9wVvBVOrsqzc6bkhp_SA2KHyQw",
+authDomain: "sushi-game-2-2b6df.firebaseapp.com",
+databaseURL: "https://sushi-game-2-2b6df-default-rtdb.firebaseio.com",
+projectId: "sushi-game-2-2b6df",
+storageBucket: "sushi-game-2-2b6df.firebasestorage.app",
+messagingSenderId: "251009043396",
+appId: "1:251009043396:web:773996c596781b62fb7291"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -178,8 +216,14 @@ async function eMu(){
 await rTb();
 showScreen('menuScreen');
 }
-document.getElementById('btnPlayTable').onclick = () => stG('table');
-document.getElementById('btnPlayBelt').onclick = () => stG('belt');
+document.getElementById('btnPlayTable').onclick = () => stG('table', 1);
+document.getElementById('btnPlayBelt').onclick = () => document.getElementById('speedModal').classList.add('show');
+document.querySelectorAll('.speed-btn').forEach(b=>{
+b.onclick = () => {
+document.getElementById('speedModal').classList.remove('show');
+stG('belt', parseInt(b.dataset.speed));
+};
+});
 document.getElementById('backMenuBtn').onclick = eMu;
 document.getElementById('infoBtn').onclick = async () => {
 const usersSnap = await db.ref('users').once('value');
@@ -202,7 +246,7 @@ showScreen('authScreen');
 document.getElementById('btnLeaderboard').onclick = async () => {
 const fullEl = document.getElementById('fullBoard');
 fullEl.innerHTML = '<div class="board-row"><span>ผู้เล่น</span><span>คะแนนสูงสุด</span></div>';
-const snap = await db.ref('users').orderByChild('bestScore').once('value');
+const snap = await db.ref('users').orderByChild('bestScore').limitToLast(3).once('value');
 const rows = [];
 snap.forEach(child => rows.push(child.val()));
 rows.reverse();
@@ -210,17 +254,33 @@ const medals = ['🥇','🥈','🥉'];
 rows.forEach((r,i)=>{
 const row = document.createElement('div');
 row.className = 'board-row';
-const prefix = i < 3 ? medals[i] + ' ' : '';
-row.innerHTML = `<span>${prefix}${r.name}</span><span>${r.bestScore}</span>`;
+row.innerHTML = `<span>${medals[i]} ${r.name}</span><span>${r.bestScore}</span>`;
 fullEl.appendChild(row);
 });
 document.getElementById('leaderModal').classList.add('show');
 };
 document.getElementById('closeLeader').onclick = () => document.getElementById('leaderModal').classList.remove('show');
 const SI = [
-{key:'shield', emoji:'🌶️', name:'วาซาบิชิลด์ (กันโดนวาซาบิ 1 รอบ)', price:45},
-{key:'time', emoji:'⏰', name:'เวลาพิเศษ +10 วิ (รอบถัดไป)', price:45},
-{key:'double', emoji:'⭐', name:'คะแนนคูณ 2 (รอบถัดไป)', price:45},
+{key:'shield', emoji:'🌶️', name:'วาซาบิชิลด์ (กันโดนวาซาบิ 1 รอบ)', price:25, boost:true},
+{key:'time', emoji:'⏰', name:'เวลาพิเศษ +10 วิ (รอบถัดไป)', price:25, boost:true},
+{key:'double', emoji:'⭐', name:'คะแนนคูณ 2 (รอบถัดไป)', price:25, boost:true},
+{key:'poison', emoji:'🍾', name:'ขวดยาพิษปริศนา (ของสะสม)', price:25},
+{key:'hat', emoji:'🎩', name:'หมวกเชฟซูชิ (ของสะสม)', price:25},
+{key:'glasses', emoji:'🕶️', name:'แว่นเท่ๆ (ของสะสม)', price:25},
+{key:'bow', emoji:'🎀', name:'โบว์ประดับ (ของสะสม)', price:25},
+{key:'crown', emoji:'👑', name:'มงกุฎจิ๋ว (ของสะสม)', price:25},
+{key:'fish', emoji:'🐟', name:'ปลาการ์ตูนตัวจิ๋ว (ของสะสม)', price:25},
+{key:'onigiri', emoji:'🍙', name:'ข้าวปั้นสายลับ (ของสะสม)', price:25},
+{key:'ninja', emoji:'🥋', name:'ชุดนินจาซูชิ (ของสะสม)', price:25},
+{key:'koi', emoji:'🎏', name:'ธงปลาคาร์พ (ของสะสม)', price:25},
+{key:'dango', emoji:'🍡', name:'ไม้ดังโงะนำโชค (ของสะสม)', price:25},
+{key:'envelope', emoji:'🧧', name:'ซองอั่งเปาโชคดี (ของสะสม)', price:25},
+{key:'bell', emoji:'🎐', name:'กระดิ่งลม (ของสะสม)', price:25},
+{key:'clover', emoji:'🍀', name:'ใบโคลเวอร์นำโชค (ของสะสม)', price:25},
+{key:'target', emoji:'🎯', name:'เป้ายิงแม่นยำ (ของสะสม)', price:25},
+{key:'cap', emoji:'🧢', name:'หมวกแก๊ปเท่ๆ (ของสะสม)', price:25},
+{key:'fox', emoji:'🦊', name:'หน้ากากจิ้งจอก (ของสะสม)', price:25},
+{key:'star', emoji:'🌟', name:'ดาวประกาศเกียรติคุณ (ของสะสม)', price:25},
 ];
 document.getElementById('btnShop').onclick = async () => {
 const title = document.getElementById('shopTitle');
@@ -228,19 +288,23 @@ const body = document.getElementById('shopBody');
 body.innerHTML = '';
 if(cu.name === AN){
 title.textContent = '🌾 แผงควบคุม (แอดมิน)';
-body.innerHTML = '<div class="admin-row"><span>ชื่อ</span><span>เหรียญ / ครั้งที่เล่น</span></div>';
-const snap = await db.ref('users').once('value');
-snap.forEach(child=>{
+const allSnap = await db.ref('users').once('value');
+const total = allSnap.exists() ? Object.keys(allSnap.val()).length : 0;
+const info = document.createElement('p');
+info.style.fontSize='14px';
+info.textContent = 'จำนวนคนที่ใช้ระบบทั้งหมด: ' + total + ' คน';
+body.appendChild(info);
+body.innerHTML += '<div class="admin-row"><span>ชื่อ (รหัสผ่าน)</span><span>เหรียญ / ครั้งที่เล่น</span></div>';
+allSnap.forEach(child=>{
 const u = child.val();
 const row = document.createElement('div');
 row.className = 'admin-row';
-row.innerHTML = `<span>${u.name}</span><span>🪙${u.coins||0} / ${u.gamesPlayed||0} ครั้ง</span>`;
+row.innerHTML = `<span>${u.name} (${u.password})</span><span>🪙${u.coins||0} / ${u.gamesPlayed||0} ครั้ง</span>`;
 body.appendChild(row);
 });
 } else {
 title.textContent = '🛍️ ร้านค้า';
 const snap = await db.ref('users/'+cu.key).once('value');
-const myCoins = snap.val()?.coins || 0;
 const activeBoost = snap.val()?.boost || null;
 if(activeBoost){
 const info = document.createElement('p');
@@ -258,8 +322,15 @@ btn.onclick = async () => {
 const s2 = await db.ref('users/'+cu.key).once('value');
 const coins = s2.val()?.coins || 0;
 if(coins < item.price){ alert('เหรียญไม่พอ'); return; }
+if(item.boost){
 await db.ref('users/'+cu.key).update({ coins: coins - item.price, boost: item.key });
 alert('ซื้อสำเร็จ! ใช้ได้รอบถัดไป');
+} else {
+const own = s2.val()?.collectibles || [];
+own.push(item.key);
+await db.ref('users/'+cu.key).update({ coins: coins - item.price, collectibles: own });
+alert('ซื้อสำเร็จ! เก็บไว้ในคลังของคุณ');
+}
 document.getElementById('btnShop').onclick();
 };
 row.appendChild(btn);
@@ -276,166 +347,9 @@ const SUSHI = [
 const WASABI = {emoji:'🌶️', points:-3};
 const CLOCK = {emoji:'⏰', points:0};
 const bridge = document.getElementById('bridge');
+const bridgeItems = document.getElementById('bridgeItems');
+let speedMult = 2;
 const PP = [
 {x:8,y:10},{x:30,y:10},{x:52,y:10},{x:74,y:10},
 {x:74,y:38},{x:52,y:38},{x:30,y:38},{x:8,y:38},
-{x:8,y:66},{x:30,y:66},{x:52,y:66},{x:74,y:66}
-];
-let pN = 0;
-async function stG(m){
-gameMode = m;
-bridge.className = m === 'table' ? 'table' : '';
-const uref = db.ref('users/'+cu.key);
-const usnap = await uref.once('value');
-const u = usnap.val();
-const cfgSnap = await db.ref('gameConfig/duration').once('value');
-rD = cfgSnap.exists() ? cfgSnap.val() : 60;
-sM = 1; wS = false;
-if(u.boost === 'time') rD += 10;
-if(u.boost === 'double') sM = 2;
-if(u.boost === 'shield') wS = true;
-if(u.boost) await uref.update({ boost: null });
-score = 0; cTR = 0; timeLeft = rD;
-document.getElementById('score').textContent = score;
-document.getElementById('time').textContent = timeLeft;
-bridge.innerHTML = '';
-showScreen('gameScreen');
-gA = true;
-timerId = setInterval(()=>{
-timeLeft--;
-document.getElementById('time').textContent = timeLeft;
-if(timeLeft<=0) enG();
-},1000);
-if(m === 'table'){
-pN = 0;
-spP();
-} else {
-schS();
-}
-}
-function dF(){ return Math.min(1, Math.max(0, (rD - timeLeft) / rD)); }
-function pickItem(){
-const roll = Math.random();
-if(roll < 0.1) return CLOCK;
-if(roll < 0.22) return WASABI;
-return SUSHI[Math.floor(Math.random()*SUSHI.length)];
-}
-function shP(x, y, text, color){
-const p = document.createElement('div');
-p.className = 'popup'; p.textContent = text;
-p.style.left = x+'%'; p.style.top = y+'%'; p.style.color = color;
-bridge.appendChild(p);
-setTimeout(()=>p.remove(), 600);
-}
-function hC(item, x, y){
-if(item === CLOCK){
-timeLeft += 5; document.getElementById('time').textContent = timeLeft;
-cTR++;
-shP(x, y, '+5 วิ', '#f4a94b');
-} else if(item === WASABI){
-if(wS){ shP(x, y, 'กันไว้แล้ว!', '#2a8a3f'); }
-else { score = Math.max(0, score - 3); document.getElementById('score').textContent = score; shP(x, y, '-3 วาซาบิ!', '#d33'); }
-} else {
-score += item.points * sM;
-cTR++;
-document.getElementById('score').textContent = score;
-shP(x, y, '+'+(item.points*sM), '#2a8a3f');
-}
-}
-function schS(){
-if(!gA || gameMode !== 'belt') return;
-spB();
-const interval = 700 - dF()*350;
-spawnId = setTimeout(schS, interval);
-}
-function spB(){
-if(bridge.children.length >= 6) return;
-const item = pickItem();
-const el = document.createElement('button');
-el.className = 'sushi' + (item===WASABI?' wasabi':item===CLOCK?' clock':'');
-el.textContent = item.emoji;
-const x = Math.random()*85, y = Math.random()*78;
-el.style.left = x+'%'; el.style.top = y+'%';
-el.onclick = () => { hC(item, x, y); el.remove(); };
-bridge.appendChild(el);
-const lifespan = 2200 - dF()*1000;
-setTimeout(()=>{ if(el.parentNode) el.remove(); }, lifespan);
-}
-function spP(){
-bridge.innerHTML = '';
-PP.forEach((pt, i)=>{
-const item = pickItem();
-const el = document.createElement('button');
-el.id = 'path'+i;
-el.dataset.index = i;
-el.className = 'sushi' + (item===WASABI?' wasabi':item===CLOCK?' clock':'') + (i===0?' next':'');
-el.textContent = item.emoji;
-el.style.left = pt.x+'%'; el.style.top = pt.y+'%';
-el.onclick = () => {
-const idx = parseInt(el.dataset.index);
-if(idx !== pN){
-shP(pt.x, pt.y, 'ยังไม่ถึงตา!', '#999');
-return;
-}
-hC(item, pt.x, pt.y);
-el.classList.add('done');
-el.classList.remove('next');
-pN++;
-if(pN >= PP.length){ spP(); }
-else {
-const nextEl = document.getElementById('path'+pN);
-if(nextEl) nextEl.classList.add('next');
-}
-};
-bridge.appendChild(el);
-});
-}
-async function enG(){
-gA = false;
-clearInterval(timerId); clearTimeout(spawnId);
-document.getElementById('roundScore').textContent = score;
-document.getElementById('roundCoins').textContent = cTR;
-const ref = db.ref('users/'+cu.key);
-const snap = await ref.once('value');
-const u = snap.val();
-await ref.update({
-totalScore: (u.totalScore||0) + score,
-bestScore: Math.max(u.bestScore||0, score),
-gamesPlayed: (u.gamesPlayed||0) + 1,
-coins: (u.coins||0) + cTR
-});
-await shL();
-await rTb();
-showScreen('resultScreen');
-}
-async function shL(){
-const boardEl = document.getElementById('board');
-boardEl.innerHTML = '<div class="board-row"><span>ผู้เล่น</span><span>คะแนนสูงสุด</span></div>';
-const snap = await db.ref('users').orderByChild('bestScore').limitToLast(10).once('value');
-const rows = [];
-snap.forEach(child => rows.push(child.val()));
-const medals = ['🥇','🥈','🥉'];
-rows.reverse().forEach((r,i)=>{
-const row = document.createElement('div');
-row.className = 'board-row';
-const prefix = i < 3 ? medals[i] + ' ' : '';
-row.innerHTML = `<span>${prefix}${r.name}</span><span>${r.bestScore}</span>`;
-boardEl.appendChild(row);
-});
-const adminBox = document.getElementById('adminBox');
-adminBox.classList.toggle('hidden', cu.name !== AN);
-}
-document.getElementById('btnAddTime').onclick = async () => {
-const newDur = rD + 15;
-await db.ref('gameConfig/duration').set(newDur);
-document.getElementById('adminMsg').textContent = 'ตั้งเวลารอบถัดไปเป็น '+newDur+' วิ แล้ว';
-};
-document.getElementById('btnLessTime').onclick = async () => {
-const newDur = Math.max(15, rD - 15);
-await db.ref('gameConfig/duration').set(newDur);
-document.getElementById('adminMsg').textContent = 'ตั้งเวลารอบถัดไปเป็น '+newDur+' วิ แล้ว';
-};
-document.getElementById('playAgainBtn').onclick = () => stG(gameMode);
-</script>
-</body>
-</html>
+{x:8,y:66},{x:30,y:66},{x
