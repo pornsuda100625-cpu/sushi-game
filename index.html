@@ -5,27 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>เกมซูชิ</title>
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" onerror="window.__fbLoadFailed=true"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js" onerror="window.__fbLoadFailed=true"></script>
 <style>:root{--bg:#fef6ec;--bridge:#e8d9c0;--plank:#d8c19a;--ink:#3a2e22;--pink:#ff8fa3;--green:#5ec26a;--accent:#ff6b6b;--card:#fffaf2;--shadow:0 6px 18px rgba(58,46,34,.15);}*{box-sizing:border-box;}body{margin:0;font-family:'Mitr',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;align-items:center;}.screen{width:100%;max-width:480px;padding:20px;}h1{text-align:center;font-size:28px;margin:10px 0 4px;}.card{background:var(--card);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-top:14px;}.tabs{display:flex;gap:8px;margin-top:16px;}.tab-btn{flex:1;padding:10px;border:none;border-radius:12px;background:#eee;font-family:'Mitr',sans-serif;font-size:15px;cursor:pointer;}.tab-btn.active{background:var(--pink);color:#fff;}input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:2px solid #ddd;font-family:'Mitr',sans-serif;font-size:15px;}button.main{width:100%;margin-top:14px;padding:13px;border:none;border-radius:12px;background:var(--accent);color:#fff;font-family:'Mitr',sans-serif;font-size:16px;cursor:pointer;}button.main:active{transform:scale(0.98);}.msg{margin-top:10px;font-size:14px;text-align:center;min-height:18px;}.msg.err{color:#d33;}.msg.ok{color:#2a8a3f;}.topbar{width:100%;max-width:480px;display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0;}.circle-btn{width:42px;height:42px;border-radius:50%;background:var(--pink);border:none;color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);}.userchip{font-size:14px;background:#fff;padding:6px 12px;border-radius:20px;box-shadow:var(--shadow);}.coinchip{font-size:13px;background:#fff7d6;padding:6px 10px;border-radius:20px;box-shadow:var(--shadow);margin-left:6px;}#bridge{position:relative;width:100%;height:340px;margin-top:14px;border-radius:16px;overflow:hidden;background:linear-gradient(#fef6ec,#fef6ec);box-shadow:var(--shadow);}
 #bridgeScene{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
 #bridge.table #bridgeScene{display:none;}
 #bridge.table{background:#c9a876;}
 #bridgeItems{position:absolute;inset:0;z-index:1;}
-#chopstick{position:absolute;left:6%;top:78%;font-size:34px;z-index:3;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));transform-origin:70% 30%;animation:chopSway 1.6s ease-in-out infinite;}
-#chopstick.pinch{animation:chopPinch .35s ease;}
-@keyframes chopSway{0%,100%{transform:rotate(-6deg) translateY(0);}50%{transform:rotate(8deg) translateY(-4px);}}
-@keyframes chopPinch{0%{transform:rotate(8deg) scale(1);}40%{transform:rotate(-18deg) scale(1.25);}100%{transform:rotate(-6deg) scale(1);}}
-.waterFlow{animation:waterMove 3s linear infinite;}
-.waterFlow2{animation:waterMove 4.5s linear infinite reverse;}
-@keyframes waterMove{0%{transform:translateX(0);}100%{transform:translateX(-40px);}}
+#chopstick{position:absolute;left:6%;top:78%;font-size:34px;z-index:3;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));}
 #bridge.table #chopstick{display:none;}
 .sushi.catchable{box-shadow:0 0 0 5px #4fc3f7,0 0 16px 8px rgba(79,195,247,.75);}
 .sushi.flowing{animation-name:flowPath;animation-timing-function:linear;animation-fill-mode:forwards;}
 @keyframes flowPath{0%{left:84%;top:6%;}25%{left:62%;top:20%;}50%{left:42%;top:40%;}75%{left:22%;top:62%;}100%{left:9%;top:80%;}}
-.sushi{font-size:34px;background:none;border:none;cursor:pointer;user-select:none;filter:drop-shadow(0 3px 3px rgba(0,0,0,.2));animation:pop .15s ease;}#bridge:not(.table) .sushi{position:absolute;}#bridge.table .sushi{position:absolute;}#bridge.table .sushi.next{box-shadow:0 0 0 4px #ffd54f,0 0 14px 6px rgba(255,213,79,.8);border-radius:50%;}#bridge.table .sushi.done{opacity:.2;pointer-events:none;}@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}.sushi.wasabi{filter:drop-shadow(0 0 8px rgba(220,40,40,.8));}.sushi.clock{filter:drop-shadow(0 0 8px rgba(244,169,75,.85));}.popup{position:absolute;font-weight:700;font-size:16px;pointer-events:none;animation:floatUp .6s ease forwards;z-index:5;}@keyframes floatUp{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(-32px);}}.hud{display:flex;justify-content:space-between;margin-top:12px;font-size:18px;}.timer{font-weight:700;color:var(--accent);}.board-row{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px solid #eee;font-size:15px;}.board-row:first-child{font-weight:700;color:var(--accent);}.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50;}.modal-bg.show{display:flex;}.modal{background:#fff;border-radius:16px;padding:22px;width:88%;max-width:360px;text-align:center;max-height:80vh;overflow-y:auto;}.hidden{display:none !important;}.adminbox{background:#fff3e0;border-radius:12px;padding:14px;margin-top:14px;}.adminbox button{width:100%;margin-top:8px;padding:10px;border:none;border-radius:10px;background:var(--green);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.adminbox button.b2{background:#f4a94b;}.shop-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;border-radius:12px;background:#fff;box-shadow:var(--shadow);margin-top:10px;text-align:left;}.shop-item button{border:none;border-radius:10px;padding:8px 12px;background:var(--pink);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.admin-row{display:flex;justify-content:space-between;padding:8px 4px;border-bottom:1px solid #eee;font-size:14px;}.admin-row:first-child{font-weight:700;}.logout-actions{display:flex;gap:10px;margin-top:16px;}.logout-actions button{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Mitr',sans-serif;cursor:pointer;}.speed-btn{width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#4fc3f7;color:#fff;font-family:'Mitr',sans-serif;font-size:16px;cursor:pointer;}</style>
+.sushi{font-size:34px;background:none;border:none;cursor:pointer;user-select:none;filter:drop-shadow(0 3px 3px rgba(0,0,0,.2));animation:pop .15s ease;}#bridge:not(.table) .sushi{position:absolute;}#bridge.table .sushi{position:absolute;}#bridge.table .sushi.next{box-shadow:0 0 0 4px #ffd54f,0 0 14px 6px rgba(255,213,79,.8);border-radius:50%;}#bridge.table .sushi.done{opacity:.2;pointer-events:none;}@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}.sushi.wasabi{filter:drop-shadow(0 0 8px rgba(220,40,40,.8));}.sushi.clock{filter:drop-shadow(0 0 8px rgba(244,169,75,.85));}.popup{position:absolute;font-weight:700;font-size:16px;pointer-events:none;animation:floatUp .6s ease forwards;z-index:5;}@keyframes floatUp{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(-32px);}}.hud{display:flex;justify-content:space-between;margin-top:12px;font-size:18px;}.timer{font-weight:700;color:var(--accent);}.board-row{display:flex;justify-content:space-between;padding:10px 6px;border-bottom:1px solid #eee;font-size:15px;}.board-row:first-child{font-weight:700;color:var(--accent);}.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50;}.modal-bg.show{display:flex;}.modal{background:#fff;border-radius:16px;padding:22px;width:88%;max-width:360px;text-align:center;max-height:80vh;overflow-y:auto;}.hidden{display:none !important;}.adminbox{background:#fff3e0;border-radius:12px;padding:14px;margin-top:14px;}.adminbox button{width:100%;margin-top:8px;padding:10px;border:none;border-radius:10px;background:var(--green);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.adminbox button.b2{background:#f4a94b;}.shop-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;border-radius:12px;background:#fff;box-shadow:var(--shadow);margin-top:10px;text-align:left;}.shop-item button{border:none;border-radius:10px;padding:8px 12px;background:var(--pink);color:#fff;font-family:'Mitr',sans-serif;cursor:pointer;}.admin-row{display:flex;justify-content:space-between;padding:8px 4px;border-bottom:1px solid #eee;font-size:14px;}.admin-row:first-child{font-weight:700;}.logout-actions{display:flex;gap:10px;margin-top:16px;}.logout-actions button{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Mitr',sans-serif;cursor:pointer;}.speed-btn{width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#4fc3f7;color:#fff;font-family:'Mitr',sans-serif;font-size:16px;cursor:pointer;}#netBanner{display:none;position:fixed;top:0;left:0;right:0;z-index:999;background:#d33;color:#fff;padding:12px 16px;text-align:center;font-family:'Mitr',sans-serif;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.3);}#netBanner.show{display:block;}#netBanner b{display:block;margin-bottom:2px;font-size:15px;}</style>
 </head>
 <body>
+<div id="netBanner"><b>⚠️ เชื่อมต่ออินเทอร์เน็ต/Firebase ไม่ได้</b>เน็ตตรงนี้อาจบล็อกอยู่ ลองเปลี่ยนเป็นเน็ตมือถือหรือ WiFi อื่นแล้วโหลดหน้านี้ใหม่</div>
 <div class="topbar hidden" id="topbar">
 <div><span class="userchip" id="userchip"></span><span class="coinchip" id="coinchip">🪙 0</span></div>
 <button class="circle-btn hidden" id="infoBtn">🍣</button>
@@ -67,23 +62,14 @@
 <circle cx="80" cy="55" r="20" fill="#6fae5f"/>
 <circle cx="330" cy="45" r="28" fill="#5c9c52"/>
 <circle cx="365" cy="55" r="18" fill="#6fae5f"/>
-<polygon points="45,100 75,100 65,135 55,135" fill="#8a6a4a"/>
-<polygon points="325,100 355,100 345,135 335,135" fill="#8a6a4a"/>
-<ellipse cx="55" cy="132" rx="22" ry="10" fill="#a97c4f"/>
-<ellipse cx="345" cy="132" rx="22" ry="10" fill="#a97c4f"/>
-<path d="M60 100 Q160 180 340 100" stroke="#8a5a35" stroke-width="22" fill="none"/>
-<line x1="92" y1="105" x2="92" y2="135" stroke="#5c3d24" stroke-width="4"/>
-<line x1="127" y1="119" x2="127" y2="149" stroke="#5c3d24" stroke-width="4"/>
-<line x1="166" y1="125" x2="166" y2="155" stroke="#5c3d24" stroke-width="4"/>
-<line x1="209" y1="123" x2="209" y2="153" stroke="#5c3d24" stroke-width="4"/>
-<line x1="255" y1="115" x2="255" y2="145" stroke="#5c3d24" stroke-width="4"/>
-<line x1="305" y1="99" x2="305" y2="129" stroke="#5c3d24" stroke-width="4"/>
-<path d="M60 100 Q160 180 340 100" stroke="#6b4326" stroke-width="6" fill="none"/>
+<path d="M60 60 L60 100 M340 55 L340 100" stroke="#6b4a2f" stroke-width="8"/>
+<path d="M60 100 Q160 180 340 100" stroke="#8a5a35" stroke-width="26" fill="none"/>
+<path d="M60 100 Q160 180 340 100" stroke="#6b4326" stroke-width="26" fill="none" stroke-dasharray="4 10"/>
 <ellipse cx="30" cy="300" rx="40" ry="16" fill="#b98d5e"/>
 <ellipse cx="120" cy="320" rx="36" ry="14" fill="#a97c4f"/>
 <ellipse cx="360" cy="290" rx="34" ry="14" fill="#b98d5e"/>
-<g class="waterFlow"><path d="M-40 190 Q60 240 160 210 T440 220 L440 340 L-40 340 Z" fill="#7fd6d0" opacity="0.85"/></g>
-<g class="waterFlow2"><path d="M-40 220 Q60 260 160 240 T440 250 L440 340 L-40 340 Z" fill="#5fc2ba" opacity="0.9"/></g>
+<path d="M0 190 Q100 240 200 210 T400 220 L400 340 L0 340 Z" fill="#7fd6d0" opacity="0.85"/>
+<path d="M0 220 Q100 260 200 240 T400 250 L400 340 L0 340 Z" fill="#5fc2ba" opacity="0.9"/>
 </svg>
 <button id="chopstick">🥢</button>
 <div id="bridgeItems"></div>
@@ -154,193 +140,19 @@ storageBucket: "sushi-game-2-2b6df.firebasestorage.app",
 messagingSenderId: "251009043396",
 appId: "1:251009043396:web:773996c596781b62fb7291"
 };
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-const AN = "🌾🪴🌳กาแฟ🌳🪴🌾";
-const sanitize = (s) => encodeURIComponent(s.trim());
-let cu = null;
-let score = 0, cTR = 0, timeLeft = 60, timerId = null, spawnId = null;
-let rD = 60, gA = false, gameMode = 'belt';
-let sM = 1, wS = false;
-const tabRegister = document.getElementById('tabRegister');
-const tabLogin = document.getElementById('tabLogin');
-const submitBtn = document.getElementById('submitBtn');
-const authMsg = document.getElementById('authMsg');
-let mode = 'register';
-function setMode(m){
-mode = m;
-tabRegister.classList.toggle('active', m==='register');
-tabLogin.classList.toggle('active', m==='login');
-submitBtn.textContent = m==='register' ? 'สร้างรายชื่อ' : 'เข้าสู่ระบบ';
-authMsg.textContent = '';
-}
-tabRegister.onclick = () => setMode('register');
-tabLogin.onclick = () => setMode('login');
-async function lgA(key, name){
-cu = { key, name };
-localStorage.setItem('sushi_user', key);
-await eMu();
-}
-submitBtn.onclick = async () => {
-const name = document.getElementById('userInput').value.trim();
-const pass = document.getElementById('passInput').value;
-authMsg.className = 'msg';
-if(!name || !pass){ authMsg.textContent='กรอกชื่อและรหัสผ่านให้ครบ'; authMsg.className='msg err'; return; }
-const key = sanitize(name);
-submitBtn.disabled = true;
-const originalLabel = submitBtn.textContent;
-submitBtn.textContent = 'กำลังเชื่อมต่อ...';
-try{
-const timeoutP = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')), 8000));
-const ref = db.ref('users/'+key);
-const snap = await Promise.race([ref.once('value'), timeoutP]);
-if(mode === 'register'){
-if(snap.exists()){
-authMsg.textContent = 'มีรายชื่อนี้อยู่แล้ว กรุณาเข้าสู่ระบบแทน';
-authMsg.className = 'msg err';
+
+if (typeof firebase === 'undefined' || window.__fbLoadFailed) {
+  document.getElementById('netBanner').classList.add('show');
 } else {
-await Promise.race([ref.set({ name, password: pass, totalScore:0, bestScore:0, gamesPlayed:0, coins:0, boost:null }), timeoutP]);
-authMsg.textContent = 'สร้างรายชื่อสำเร็จ!'; authMsg.className = 'msg ok';
-setTimeout(()=>lgA(key, name), 400);
+  try {
+    bootApp();
+  } catch (e) {
+    console.error(e);
+    document.getElementById('netBanner').classList.add('show');
+  }
 }
-} else {
-if(!snap.exists()){
-authMsg.textContent = 'คุณไม่มีแอกเข่าในระบบ กรุณาสร้างรายชื่อใหม่';
-authMsg.className = 'msg err';
-} else if(snap.val().password !== pass){
-authMsg.textContent = 'รหัสผ่านไม่ถูกต้อง'; authMsg.className = 'msg err';
-} else {
-authMsg.textContent = 'เข้าสู่ระบบสำเร็จ!'; authMsg.className = 'msg ok';
-setTimeout(()=>lgA(key, name), 400);
-}
-}
-} catch(e){
-authMsg.textContent = 'เชื่อมต่อไม่ได้ สัญญาณอาจหลุด กดปุ่มลองใหม่อีกครั้ง';
-authMsg.className = 'msg err';
-} finally {
-submitBtn.disabled = false;
-submitBtn.textContent = originalLabel;
-}
-};
-(async function atL(){
-const savedKey = localStorage.getItem('sushi_user');
-if(!savedKey) return;
-const snap = await db.ref('users/'+savedKey).once('value');
-if(snap.exists()){ cu = { key: savedKey, name: snap.val().name }; await eMu(); }
-})();
-function showScreen(id){
-['authScreen','menuScreen','gameScreen','resultScreen'].forEach(s=>{
-document.getElementById(s).classList.toggle('hidden', s!==id);
-});
-}
-async function rTb(){
-document.getElementById('topbar').classList.remove('hidden');
-document.getElementById('userchip').textContent = cu.name;
-const snap = await db.ref('users/'+cu.key).once('value');
-document.getElementById('coinchip').textContent = '🪙 ' + (snap.val()?.coins || 0);
-document.getElementById('infoBtn').classList.toggle('hidden', cu.name !== AN);
-}
-async function eMu(){
-await rTb();
-showScreen('menuScreen');
-}
-document.getElementById('btnPlayTable').onclick = () => stG('table', 1);
-document.getElementById('btnPlayBelt').onclick = () => document.getElementById('speedModal').classList.add('show');
-document.querySelectorAll('.speed-btn').forEach(b=>{
-b.onclick = () => {
-document.getElementById('speedModal').classList.remove('show');
-stG('belt', parseInt(b.dataset.speed));
-};
-});
-document.getElementById('backMenuBtn').onclick = eMu;
-document.getElementById('infoBtn').onclick = async () => {
-const usersSnap = await db.ref('users').once('value');
-const total = usersSnap.exists() ? Object.keys(usersSnap.val()).length : 0;
-const meSnap = await db.ref('users/'+cu.key).once('value');
-document.getElementById('totalUsers').textContent = total;
-document.getElementById('myTotal').textContent = meSnap.exists() ? meSnap.val().totalScore : 0;
-document.getElementById('infoModal').classList.add('show');
-};
-document.getElementById('closeModal').onclick = () => document.getElementById('infoModal').classList.remove('show');
-document.getElementById('btnLogout').onclick = () => document.getElementById('logoutModal').classList.add('show');
-document.getElementById('cancelLogout').onclick = () => document.getElementById('logoutModal').classList.remove('show');
-document.getElementById('confirmLogout').onclick = () => {
-localStorage.removeItem('sushi_user');
-cu = null;
-document.getElementById('logoutModal').classList.remove('show');
-document.getElementById('topbar').classList.add('hidden');
-showScreen('authScreen');
-};
-document.getElementById('btnLeaderboard').onclick = async () => {
-const fullEl = document.getElementById('fullBoard');
-fullEl.innerHTML = '<div class="board-row"><span>ผู้เล่น</span><span>คะแนนสูงสุด</span></div>';
-const snap = await db.ref('users').orderByChild('bestScore').limitToLast(3).once('value');
-const rows = [];
-snap.forEach(child => rows.push(child.val()));
-rows.reverse();
-const medals = ['🥇','🥈','🥉'];
-rows.forEach((r,i)=>{
-const row = document.createElement('div');
-row.className = 'board-row';
-row.innerHTML = `<span>${medals[i]} ${r.name}</span><span>${r.bestScore}</span>`;
-fullEl.appendChild(row);
-});
-document.getElementById('leaderModal').classList.add('show');
-};
-document.getElementById('closeLeader').onclick = () => document.getElementById('leaderModal').classList.remove('show');
-const SI = [
-{key:'shield', emoji:'🌶️', name:'วาซาบิชิลด์: กันโดนวาซาบิ 1 รอบ', price:25},
-{key:'time', emoji:'⏰', name:'เวลาพิเศษ: +10 วิ รอบถัดไป', price:25},
-{key:'double', emoji:'⭐', name:'คะแนนคูณ 2 รอบถัดไป', price:25},
-{key:'triple', emoji:'👑', name:'คะแนนคูณ 3 รอบถัดไป', price:25},
-{key:'antidote', emoji:'🍾', name:'ยาแก้พิษ: โดนวาซาบิแล้วได้เหรียญ+2 แทนเสียคะแนน', price:25},
-{key:'fastspawn', emoji:'🐟', name:'ซูชิโผล่ถี่ขึ้น 1 รอบ (สายพาน)', price:25},
-{key:'slowflow', emoji:'🎐', name:'สายพานไหลช้าลง 1 รอบ (สายพาน)', price:25},
-{key:'lesswasabi', emoji:'🍡', name:'ลดโอกาสเจอวาซาบิลงครึ่งหนึ่ง 1 รอบ', price:25},
-{key:'moreclock', emoji:'🍀', name:'การันตีนาฬิกาโผล่อย่างน้อย 2 ครั้ง 1 รอบ', price:25},
-{key:'clockbonus', emoji:'🎯', name:'นาฬิกาให้คะแนนพิเศษ +3 ด้วย 1 รอบ', price:25},
-{key:'widecatch', emoji:'🥋', name:'หน้าต่างจับที่ตะเกียบนานขึ้น 1 รอบ (สายพาน)', price:25},
-{key:'crowdslots', emoji:'🧢', name:'ซูชิพร้อมกันบนจอเพิ่มขึ้น 1 รอบ (สายพาน)', price:25},
-{key:'pointboost', emoji:'🍙', name:'ซูชิทุกชิ้นได้คะแนนพิเศษ +1 1 รอบ', price:25},
-{key:'wasabicap', emoji:'🦊', name:'วาซาบิเสียคะแนนได้แค่ครั้งเดียวต่อรอบ', price:25},
-{key:'headstart', emoji:'🎀', name:'เริ่มรอบด้วยคะแนนฟรี +5 ทันที', price:25},
-{key:'coindouble', emoji:'🧧', name:'เหรียญที่ได้รอบนี้คูณ 2', price:25},
-{key:'luckydrop', emoji:'🎁', name:'สุ่มรับเหรียญโบนัส 5-15 ทันทีที่ซื้อ', price:25, immediate:true},
-{key:'orderskip', emoji:'🥁', name:'ข้ามลำดับได้ 1 ครั้งโดยไม่เสียแต้ม (โหมดโต๊ะ)', price:25},
-{key:'luckystart', emoji:'🎏', name:'ซูชิชิ้นแรกของรอบเป็นชิ้นคะแนนสูงเสมอ', price:25},
-{key:'poison', emoji:'💀', name:'ยาพิษกลับด้าน: วาซาบิรอบนี้ไม่มีผลเสียเลย', price:25},
-];
-document.getElementById('btnShop').onclick = async () => {
-const title = document.getElementById('shopTitle');
-const body = document.getElementById('shopBody');
-body.innerHTML = '';
-if(cu.name === AN){
-title.textContent = '🌾 แผงควบคุม (แอดมิน)';
-const allSnap = await db.ref('users').once('value');
-const total = allSnap.exists() ? Object.keys(allSnap.val()).length : 0;
-const info = document.createElement('p');
-info.style.fontSize='14px';
-info.textContent = 'จำนวนคนที่ใช้ระบบทั้งหมด: ' + total + ' คน';
-body.appendChild(info);
-body.innerHTML += '<div class="admin-row"><span>ชื่อ (รหัสผ่าน)</span><span>เหรียญ / ครั้งที่เล่น</span></div>';
-allSnap.forEach(child=>{
-const u = child.val();
-const row = document.createElement('div');
-row.className = 'admin-row';
-row.innerHTML = `<span>${u.name} (${u.password})</span><span>🪙${u.coins||0} / ${u.gconfirmLogout" style="background:var(--accent);color:#fff;">ออก</button>
-</div>
-</div>
-</div>
-<script>
-const firebaseConfig = {
-apiKey: "AIzaSyD0Negxg9wVvBVOrsqzc6bkhp_SA2KHyQw",
-authDomain: "sushi-game-2-2b6df.firebaseapp.com",
-databaseURL: "https://sushi-game-2-2b6df-default-rtdb.firebaseio.com",
-projectId: "sushi-game-2-2b6df",
-storageBucket: "sushi-game-2-2b6df.firebasestorage.app",
-messagingSenderId: "251009043396",
-appId: "1:251009043396:web:773996c596781b62fb7291"
-};
+
+function bootApp(){
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const AN = "🌾🪴🌳กาแฟ🌳🪴🌾";
@@ -531,27 +343,4 @@ alert('ซื้อสำเร็จ! ใช้ได้รอบถัดไ�
 const own = s2.val()?.collectibles || [];
 own.push(item.key);
 await db.ref('users/'+cu.key).update({ coins: coins - item.price, collectibles: own });
-alert('ซื้อสำเร็จ! เก็บไว้ในคลังของคุณ');
-}
-document.getElementById('btnShop').onclick();
-};
-row.appendChild(btn);
-body.appendChild(row);
-});
-}
-document.getElementById('shopModal').classList.add('show');
-};
-document.getElementById('closeShop').onclick = () => document.getElementById('shopModal').classList.remove('show');
-const SUSHI = [
-{emoji:'🍣', points:3}, {emoji:'🍙', points:1}, {emoji:'🍱', points:2},
-{emoji:'🍤', points:4}, {emoji:'🍥', points:2}, {emoji:'🍘', points:1},
-];
-const WASABI = {emoji:'🌶️', points:-3};
-const CLOCK = {emoji:'⏰', points:0};
-const bridge = document.getElementById('bridge');
-const bridgeItems = document.getElementById('bridgeItems');
-let speedMult = 2;
-const PP = [
-{x:8,y:10},{x:30,y:10},{x:52,y:10},{x:74,y:10},
-{x:74,y:38},{x:52,y:38},{x:30,y:38},{x:8,y:38},
-{x:8,y:66},{x:30,y:66},{x
+al
